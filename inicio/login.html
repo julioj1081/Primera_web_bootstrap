@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>LOGIN PRINCIPAL</title>
+<!--LIBRERIAS PARA SAMMY-->
+<script type = "text/javascript" src = "js/jquery-1.10.2.min.js"></script>
+<script type = "text/JavaScript" src = "js/sammy-0.5.4.min.js"></script>
+
+<!-- LIBRERIAS PARA MD5 ENCRIPTACION-->
+<script language="JavaScript" src="js/md5.js"></script>
+<script language="javascript">
+  function encriptar(){
+      hash = calcMD5(document.getElementById('contrasena').value);
+      document.getElementById('hash').value=hash;
+      //document.form.hash.value=hash;
+      document.form1.submit();
+      //alertify.success("Bienvenido");
+  }
+</script>
+
+<!--Inicio del sammy y lamado de documentos-->
+<script type="text/javascript">
+  var ratpack = $.sammy(function(context){
+    this.element_selector = "#contenido";
+    this.get('#/registro',function(context){
+        $("#contenido").load('inicio/Registro.html');
+      });
+      this.get('#/contrasena',function(context){
+          $("#contenido").load('inicio/formulario_alumnos/Olvidar.html');
+        });
+    });
+
+    $(function(){
+      ratpack.run('#/');
+    });
+</script>
+<style media="screen">
+/*DISEÑO DE PC*/
+  h2{
+    text-align: left;
+    color: rgb(1, 3, 0);
+  }
+  #contenido{
+    text-align: center;
+    margin: 0 auto;
+    width: 72%;
+  }
+
+  .botones{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .botones a{
+    padding: 2px;
+    width: auto;
+    margin: 5px;
+  }
+
+
+</style>
+
+</head>
+<body>
+<!--AQUI ESTA EL LOGIN PRINCIPAL-->
+
+<div id="header">
+  <h2>Bienvenido a bootstrap</h2>
+</div>
+<br><br>
+<div id="contenido">
+      <form id="form1" name="form1" method="post" action="inicio/acceso_de_login.php" enctype="multipart/form-data">
+        <div class="form-group">
+        <label>Matricula</label>
+        <input type="text" name="Matricula" id="Matricula" placeholder="Ingresa tu matricula" class="form-control"  required/>
+        </div>
+        <div class="form-group">
+        <label for="">Password</label>
+        <input type="password" name="contrasena" id="contrasena" placeholder="Ingresa tu contraseña" class="form-control" required/>
+        </div>
+        <div class="form-group">
+        <input style="margin:8px;" type="submit" name="button" value="Iniciar session" onclick="encriptar()"  class="btn btn-success"/>
+        <input name="hash" type="hidden" id="hash">
+
+        <button style="padding:0px; margin:8px;"><a href="#/registro" class="btn btn-primary">¿Eres nuevo nuevo?</a></button>
+        <button style="padding:0px; margin:8px;"><a href="#/contrasena" class="btn btn-warning btn-xs" id="b">Olvidastes tu contraseña</a></button>
+        </div>
+      </form>
+  </div>
+
+</body>
+</html>

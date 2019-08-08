@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <!--
+<link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/alertify.css">
+<link rel="stylesheet" type="text/css" href="librerias/alertifyjs/css/themes/default.css">
+-->
+    <script language="JavaScript" src="./md5.js"></script>
+    <script language="javascript">
+      function encriptar() {
+        hash = calcMD5(document.getElementById("contrasena").value);
+        //document.form.hash.value=hash;
+        document.getElementById("hash").value = hash;
+        document.form1.submit();
+        alert("ok");
+        return 0;
+      }
+    </script>
+
+    <style media="screen">
+      h3 {
+        text-align: center;
+        color: rgb(246, 96, 0);
+      }
+      #tabla {
+        margin: 0 auto;
+        margin-top: 10px;
+        margin-bottom: 0%;
+      }
+      input {
+        /*overflow: visible;
+    */
+        width: 220px;
+      }
+      @media screen and (max-width: 460px) {
+        input {
+          /*overflow: visible;
+      */
+          width: 120px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <br><br><br>
+    <div class="table-responsive-md">
+      <h3>Llene todos los campos</h3>
+      <br />
+      <form id="form1" name="form1" method="post" action="inicio/md5.php" enctype="multipart/form-data"
+      >
+        <table align="center" id="tabla">
+          <tr>
+            <td><label>Matricula</label></td>
+            <td>
+              <label>
+                <input type="text" name="Matricula" id="Matricula" placeholder="Ingresa tu matricula" required
+                />
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td><label>Nombre</label></td>
+            <td>
+              <label>
+                <input type="text" name="Nombre" id="Nombre" placeholder="Ingresa tu Nombre" required
+                />
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td><label>Apellidos</label></td>
+            <td>
+              <label>
+                <input type="text" name="Apellidos" id="Apellidos" placeholder="Ingresa tus apellidos" required
+                />
+              </label>
+            </td>
+          </tr>
+
+          <tr>
+            <td><label>Contraseña</label></td>
+            <td>
+              <label>
+                <input type="password" name="contrasena" id="contrasena" placeholder="Ingresa una contraseña" required
+                />
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td><label>Correo</label></td>
+            <td>
+              <label>
+                <input type="text" name="Correo" id="Correo" placeholder="Ingresa un correo electronico" required
+                />
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td><label>Foto de perfil</label></td>
+            <td>
+              <input type="file" name="Foto" id="Foto" placeholder="Ingresa una foto opcional" required
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <label>
+                <input type="submit" name="button" id="button" value="Registrarte" onclick="encriptar()" align="center" class="btn btn-info"
+                />
+                <input name="hash" type="hidden" id="hash" />
+              </label>
+            </td>
+            <td>
+              <label>
+                <input type="reset" value="Descartar" class="btn btn-danger" />
+              </label>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <br /><br /><br />
+  </body>
+</html>
